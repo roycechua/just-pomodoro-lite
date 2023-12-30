@@ -2,7 +2,7 @@ import { Dispatch, ReactNode } from 'react';
 
 export type GlobalAppStateProviderType = { children: ReactNode };
 
-export type AppStateType = 'initial' | 'working' | 'break';
+export type AppStateType = 'initial' | 'working' | 'break' | string;
 
 export type AppStateReducerActionTypes = 'UPDATE_STATE' | 'RESET_STATE';
 
