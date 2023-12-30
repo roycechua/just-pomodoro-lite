@@ -19,3 +19,9 @@ export type GlobalAppStateContextType = [
   InitialGlobalAppStateType,
   Dispatch<InitialGlobalAppStateActionType>
 ];
+
+export interface TimerInputType {
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+}
