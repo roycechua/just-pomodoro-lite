@@ -16,6 +16,14 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
       onComplete,
     });
 
+  useEffect(() => {
+    document.title = `${
+      hours > 0 ? hours.toString().padStart(2, '0') + ':' : ''
+    }${minutes.toString().padStart(2, '0')}:${seconds
+      .toString()
+      .padStart(2, '0')}`;
+  }, [hours, minutes, seconds]);
+
   const handleTimerButtonPressed = useCallback(() => {
     if (isTimerRunning) {
       stop();
