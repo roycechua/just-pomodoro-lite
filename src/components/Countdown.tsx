@@ -3,6 +3,12 @@
 import { useEffect, useState } from 'react';
 import CountdownTimer from './CountdownTimer';
 import useAudio from '../hooks/useAudio';
+import {
+  DEFAULT_BREAK_MODE_MESSAGE,
+  DEFAULT_BREAK_MODE_MINUTES,
+  DEFAULT_WORK_MODE_MESSAGE,
+  DEFAULT_WORK_MODE_MINUTES,
+} from '../utils/constants';
 
 export default function Countdown() {
   // const [globalAppState, dispatch] = useGlobalAppState();
@@ -13,17 +19,23 @@ export default function Countdown() {
   );
 
   useEffect(() => {
-    playSound();
-    setTimeout(() => {
-      stopSound();
-    }, 10000);
+    if (!workMode) {
+      playSound();
+      setTimeout(() => {
+        stopSound();
+      }, 15000);
+    }
   }, [workMode]);
 
   return (
     <>
       <CountdownTimer
-        initialMinutes={workMode ? 25 : 5}
-        message={workMode ? 'Work mode' : 'Take a break'}
+        initialMinutes={
+          workMode ? DEFAULT_WORK_MODE_MINUTES : DEFAULT_BREAK_MODE_MINUTES
+        }
+        message={
+          workMode ? DEFAULT_WORK_MODE_MESSAGE : DEFAULT_BREAK_MODE_MESSAGE
+        }
         onComplete={() => {
           setWorkMode(!workMode);
         }}
