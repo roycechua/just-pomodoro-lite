@@ -45,4 +45,5 @@ const GlobalAppStateProvider = ({ children }: GlobalAppStateProviderType) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { useGlobalAppState, GlobalAppStateProvider };
