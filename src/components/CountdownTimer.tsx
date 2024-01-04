@@ -11,10 +11,10 @@ type CountdownTimerProps = {
 
 export default function CountdownTimerProps(props: CountdownTimerProps) {
   const { initialMinutes, message, onComplete } = props;
-  const { hours, minutes, seconds, isTimerRunning, start, stop } = useTimer({
-    minutes: initialMinutes,
-    onComplete,
-  });
+  const { hours, minutes, seconds, isTimerRunning, start, stop, setTimer } =
+    useTimer({
+      onComplete,
+    });
 
   const handleTimerButtonPressed = useCallback(() => {
     if (isTimerRunning) {
@@ -23,6 +23,12 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
       start();
     }
   }, [isTimerRunning, start, stop]);
+
+  useEffect(() => {
+    setTimer({
+      minutes: initialMinutes,
+    });
+  }, [initialMinutes]);
 
   useEffect(() => {
     const keyListener = (e: KeyboardEvent) => {
@@ -45,7 +51,7 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
   ) : (
     <>
       <FaPlay color={'#9EE493'} size={45} style={{ marginRight: 10 }} />
-      <p style={{ margin: 0, fontSize: '3rem' }}>Play</p>
+      <p style={{ margin: 0, fontSize: '3rem' }}>Start</p>
     </>
   );
 
