@@ -10,6 +10,12 @@ Remaining features to implement:
   - [ ] Message
   - [ ] Sound
 
+# How to deploy
+
+You can deploy it as you would any React Web App. For my app, I deployed it on Vercel.
+
+Follow the link here for more details: https://vitejs.dev/guide/static-deploy.html
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
