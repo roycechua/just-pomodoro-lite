@@ -24,4 +24,5 @@ export interface TimerInputType {
   hours?: number;
   minutes?: number;
   seconds?: number;
+  onComplete?: () => void;
 }

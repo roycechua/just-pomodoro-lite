@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 import { TimerInputType } from '../types';
 
-const useTimer = (initialTimeParams: TimerInputType) => {
-  const initalHours = initialTimeParams.hours || 0;
-  const initialMinutes = initialTimeParams.minutes || 0;
-  const initialSeconds = initialTimeParams.seconds || 0;
+const useTimer = (timerParams: TimerInputType) => {
+  const initalHours = timerParams.hours || 0;
+  const initialMinutes = timerParams.minutes || 0;
+  const initialSeconds = timerParams.seconds || 0;
   const [hours, setHours] = useState(initalHours);
   const [minutes, setMinutes] = useState(initialMinutes);
   const [seconds, setSeconds] = useState(initialSeconds);
@@ -69,6 +69,9 @@ const useTimer = (initialTimeParams: TimerInputType) => {
       if (countdown <= 0) {
         reset();
         cleanupTimer();
+        if (timerParams.onComplete) {
+          timerParams.onComplete();
+        }
       }
     }, 1000);
   };
