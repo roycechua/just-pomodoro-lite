@@ -1,6 +1,8 @@
 // import { useGlobalAppState } from '../providers/GlobalAppStateProvider';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import useTimer from '../hooks/useTimer';
+import { FaPlay } from 'react-icons/fa';
+import { FaPause } from 'react-icons/fa';
 
 export default function Countdown() {
   // const [globalAppState, dispatch] = useGlobalAppState();
@@ -8,15 +10,38 @@ export default function Countdown() {
     minutes: 5,
   });
 
-  const handleTimerButton = useCallback(() => {
+  const handleTimerButtonPressed = useCallback(() => {
     if (isTimerRunning) {
       stop();
     } else {
       start();
     }
-  }, [isTimerRunning, hours, minutes, seconds, start, stop]);
+  }, [isTimerRunning, start, stop]);
 
-  const renderTimerButtonLabel = isTimerRunning ? 'Stop' : 'Start';
+  useEffect(() => {
+    const keyListener = (e: KeyboardEvent) => {
+      // if spacebar was presed
+      if (e.key === ' ') {
+        handleTimerButtonPressed();
+      }
+    };
+    window.addEventListener('keypress', keyListener);
+    return () => {
+      window.removeEventListener('keypress', keyListener);
+    };
+  }, [isTimerRunning, handleTimerButtonPressed]);
+
+  const renderTimerButtonLabel = isTimerRunning ? (
+    <>
+      <FaPause color={'#9EE493'} size={45} style={{ marginRight: 10 }} />
+      <p style={{ margin: 0, fontSize: '3rem' }}>Stop</p>
+    </>
+  ) : (
+    <>
+      <FaPlay color={'#9EE493'} size={45} style={{ marginRight: 10 }} />
+      <p style={{ margin: 0, fontSize: '3rem' }}>Play</p>
+    </>
+  );
 
   return (
     <div
@@ -32,12 +57,22 @@ export default function Countdown() {
         {minutes.toString().padStart(2, '0')}:
         {seconds.toString().padStart(2, '0')}
       </p>
-      <button
-        style={{ padding: 20, borderRadius: 10 }}
-        onClick={handleTimerButton}
+
+      <div
+        style={{
+          padding: 20,
+          borderRadius: 10,
+          fontSize: 30,
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'row',
+          display: 'flex',
+          cursor: 'pointer',
+        }}
+        onClick={handleTimerButtonPressed}
       >
         {renderTimerButtonLabel}
-      </button>
+      </div>
     </div>
   );
 }
