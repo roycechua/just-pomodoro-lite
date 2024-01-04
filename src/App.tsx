@@ -1,12 +1,12 @@
 import './App.css';
-import Countdown from './components/Countdown';
+import Pomodoro from './components/Pomodoro';
 import { GlobalAppStateProvider } from './providers/GlobalAppStateProvider';
 
 function App() {
   return (
     <>
       <GlobalAppStateProvider>
-        <Countdown />
+        <Pomodoro />
       </GlobalAppStateProvider>
     </>
   );
