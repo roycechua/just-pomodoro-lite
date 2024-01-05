@@ -14,17 +14,15 @@ export default function Countdown() {
   // const [globalAppState, dispatch] = useGlobalAppState();
   const [workMode, setWorkMode] = useState(true);
   const { play: playSound, stop: stopSound } = useAudio(
-    '/break_alarm.mp3',
+    'alarms/break_alarm2.mp3',
     false
   );
 
   useEffect(() => {
-    if (!workMode) {
-      playSound();
-      setTimeout(() => {
-        stopSound();
-      }, 15000);
-    }
+    playSound();
+    setTimeout(() => {
+      stopSound();
+    }, 10000);
   }, [workMode]);
 
   return (
