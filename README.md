@@ -4,7 +4,7 @@ Just a simple Pomodoro timer
 
 Remaining features to implement:
 
-- [ ] Responsive Styles
+- [x] Responsive Styles
 - [ ] Customizability Options
   - [ ] Color Theme
   - [ ] Message
