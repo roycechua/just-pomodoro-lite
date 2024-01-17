@@ -26,3 +26,5 @@ export interface TimerInputType {
   seconds?: number;
   onComplete?: () => void;
 }
+
+export type ModeType = 'work' | 'break';
