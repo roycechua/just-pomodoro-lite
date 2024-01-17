@@ -53,46 +53,32 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
 
   const renderTimerButtonLabel = isTimerRunning ? (
     <>
-      <FaPause color={'#9EE493'} size={45} style={{ marginRight: 10 }} />
-      <p style={{ margin: 0, fontSize: '3rem' }}>Stop</p>
+      <FaPause color={'#9EE493'} size={30} style={{ marginRight: 10 }} />
+      <p className='m-0 text-2xl md:text-5xl font-bold'>Stop</p>
     </>
   ) : (
     <>
-      <FaPlay color={'#9EE493'} size={45} style={{ marginRight: 10 }} />
-      <p style={{ margin: 0, fontSize: '3rem' }}>Start</p>
+      <FaPlay color={'#9EE493'} size={30} style={{ marginRight: 10 }} />
+      <p className='m-0 text-2xl md:text-5xl font-bold'>Start</p>
     </>
   );
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flex: 1,
-        alignItems: 'center',
-        flexDirection: 'column',
-      }}
-    >
-      <p className='timer'>
+    <div className='flex flex-1 flex-col items-center justify-center'>
+      <p className='m-0 mb-4 sm:mb-4 md:mb-10 text-7xl sm:text-7xl md:text-8xl lg:text-9xl font-bold'>
         {hours > 0 ? `${hours.toString().padStart(2, '0')}:` : null}
         {minutes.toString().padStart(2, '0')}:
         {seconds.toString().padStart(2, '0')}
       </p>
 
       {message && (
-        <p style={{ fontSize: '4rem', fontWeight: 'bold' }}>{message}</p>
+        <p className='text-2xl sm:text-2xl md:text-5xl lg:text-6xl  font-bold'>
+          {message}
+        </p>
       )}
 
       <div
-        style={{
-          padding: 20,
-          borderRadius: 10,
-          fontSize: 30,
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'row',
-          display: 'flex',
-          cursor: 'pointer',
-        }}
+        className='pt-5 md:pt-10 rounded-10 items-center justify-center flex cursor-pointer'
         onClick={handleTimerButtonPressed}
       >
         {renderTimerButtonLabel}
