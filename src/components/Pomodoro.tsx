@@ -37,9 +37,6 @@ export default function Countdown() {
           setMode(newMode);
           // play sound on every complete
           playSound();
-          setTimeout(() => {
-            stopSound();
-          }, 10000);
         }}
       />
     </>
