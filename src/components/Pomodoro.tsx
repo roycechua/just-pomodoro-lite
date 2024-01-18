@@ -1,6 +1,6 @@
 // import { useGlobalAppState } from '../providers/GlobalAppStateProvider';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CountdownTimer from './CountdownTimer';
 import useAudio from '../hooks/useAudio';
 import {
