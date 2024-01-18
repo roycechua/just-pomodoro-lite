@@ -4,7 +4,7 @@ Just a simple Pomodoro timer with PWA support
 
 Install on your mobile phone and desktop as a stand-alone app
 
-Roadmap is on [/docs/ROADMAP.md](https://github.com/roycechua/just-pomodoro-lite/docs/ROADMAP.md)
+Roadmap is on [/docs/ROADMAP.md](https://github.com/roycechua/just-pomodoro-lite/blob/main/docs/ROADMAP.md)
 
 # How to deploy
 
