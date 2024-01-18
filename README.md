@@ -1,14 +1,10 @@
 # Just Pomodoro Lite
 
-Just a simple Pomodoro timer
+Just a simple Pomodoro timer with PWA support
 
-Remaining features to implement:
+Install on your mobile phone and desktop as a stand-alone app
 
-- [x] Responsive Styles
-- [ ] Customizability Options
-  - [ ] Color Theme
-  - [ ] Message
-  - [ ] Sound
+Roadmap is on [/docs/ROADMAP.md](https://github.com/roycechua/just-pomodoro-lite/docs/ROADMAP.md)
 
 # How to deploy
 
@@ -46,3 +42,13 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## Generate your own assets
+
+You can use the Vite PWA assets generator here https://vite-pwa-org.netlify.app/assets-generator/cli.html
+
+This is already installed in this repo as a dev dependency
+
+```
+npm run generate-pwa-assets
+```
