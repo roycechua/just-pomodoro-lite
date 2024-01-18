@@ -19,14 +19,6 @@ export default function Countdown() {
     false
   );
 
-  // play sound on every mode change
-  useEffect(() => {
-    playSound();
-    setTimeout(() => {
-      stopSound();
-    }, 10000);
-  }, [mode]);
-
   return (
     <>
       <CountdownTimer
@@ -43,6 +35,11 @@ export default function Countdown() {
         onComplete={() => {
           const newMode = mode === 'work' ? 'break' : 'work';
           setMode(newMode);
+          // play sound on every complete
+          playSound();
+          setTimeout(() => {
+            stopSound();
+          }, 10000);
         }}
       />
     </>
