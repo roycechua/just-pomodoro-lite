@@ -14,10 +14,7 @@ import { ModeType } from '../types';
 export default function Countdown() {
   // const [globalAppState, dispatch] = useGlobalAppState();
   const [mode, setMode] = useState<ModeType>('work');
-  const { play: playSound, stop: stopSound } = useAudio(
-    'alarms/break_alarm2.mp3',
-    false
-  );
+  const { play: playSound } = useAudio('alarms/break_alarm2.mp3', false);
 
   return (
     <>
