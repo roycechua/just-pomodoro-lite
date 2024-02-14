@@ -1,7 +1,8 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useTimer from '../hooks/useTimer';
 import { FaPlay } from 'react-icons/fa';
 import { FaPause } from 'react-icons/fa';
+import TimerMessage from './TimerMessage';
 
 type CountdownTimerProps = {
   initialMinutes: number;
@@ -15,6 +16,7 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
     useTimer({
       onComplete,
     });
+  const [onEditMode, setOnEditMode] = useState(false);
 
   useEffect(() => {
     document.title = `${
@@ -41,7 +43,7 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
   useEffect(() => {
     const keyListener = (e: KeyboardEvent) => {
       // if spacebar was presed
-      if (e.key === ' ') {
+      if (e.key === ' ' && !onEditMode) {
         handleTimerButtonPressed();
       }
     };
@@ -72,9 +74,10 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
       </p>
 
       {message && (
-        <p className='text-2xl sm:text-2xl md:text-5xl lg:text-6xl  font-bold'>
-          {message}
-        </p>
+        <TimerMessage
+          message={message}
+          onEditModeToggled={(newValue) => setOnEditMode(newValue)}
+        />
       )}
 
       <div
