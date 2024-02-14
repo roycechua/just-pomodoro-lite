@@ -10,7 +10,7 @@ What can you expect to improved
 - [ ] State Persistence (keep track of mode and time)
 - [ ] Customizability Options
   - [ ] Color Theme
-  - [ ] Message
+  - [x] Message
   - [ ] Sound
 - [ ] Automated Tests
 - [ ] Final Stability Fixes and Refactors for v1.0
