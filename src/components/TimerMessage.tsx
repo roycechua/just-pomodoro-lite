@@ -27,6 +27,9 @@ export default function TimerMessage(props: TimerMessageProps) {
           // if spacebar was presed
           if (e.key === 'Escape') {
             toggleTimerMessageEditMode();
+            if (timerMessage.length === 0) {
+              setTimerMessage(message);
+            }
           }
         }}
         style={{ backgroundColor: 'transparent' }}
