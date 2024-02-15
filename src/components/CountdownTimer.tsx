@@ -5,6 +5,7 @@ import { FaPause } from 'react-icons/fa';
 import TimerMessage from './TimerMessage';
 import TimerButton from './TimerButton';
 import { useSetTitle } from '../hooks/useSetTitle';
+import TimerDisplay from './TimerDisplay';
 
 type CountdownTimerProps = {
   initialMinutes: number;
@@ -62,11 +63,7 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
 
   return (
     <div className='flex flex-1 flex-col items-center justify-center'>
-      <p className='m-0 mb-4 sm:mb-4 md:mb-10 text-7xl sm:text-7xl md:text-8xl lg:text-9xl font-bold'>
-        {hours > 0 ? `${hours.toString().padStart(2, '0')}:` : null}
-        {minutes.toString().padStart(2, '0')}:
-        {seconds.toString().padStart(2, '0')}
-      </p>
+      <TimerDisplay hours={hours} minutes={minutes} seconds={seconds} />
 
       {message && (
         <TimerMessage
