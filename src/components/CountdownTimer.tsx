@@ -3,6 +3,9 @@ import useTimer from '../hooks/useTimer';
 import { FaPlay } from 'react-icons/fa';
 import { FaPause } from 'react-icons/fa';
 import TimerMessage from './TimerMessage';
+import TimerButton from './TimerButton';
+import { useSetTitle } from '../hooks/useSetTitle';
+import TimerDisplay from './TimerDisplay';
 
 type CountdownTimerProps = {
   initialMinutes: number;
@@ -17,14 +20,7 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
       onComplete,
     });
   const [onEditMode, setOnEditMode] = useState(false);
-
-  useEffect(() => {
-    document.title = `${
-      hours > 0 ? hours.toString().padStart(2, '0') + ':' : ''
-    }${minutes.toString().padStart(2, '0')}:${seconds
-      .toString()
-      .padStart(2, '0')} - Just Pomodoro Lite`;
-  }, [hours, minutes, seconds]);
+  useSetTitle({ hours, minutes, seconds });
 
   const handleTimerButtonPressed = useCallback(() => {
     if (isTimerRunning) {
@@ -53,7 +49,7 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
     };
   }, [isTimerRunning, handleTimerButtonPressed]);
 
-  const renderTimerButtonLabel = isTimerRunning ? (
+  const timerLabel = isTimerRunning ? (
     <>
       <FaPause color={'#9EE493'} size={30} style={{ marginRight: 10 }} />
       <p className='m-0 text-2xl md:text-5xl font-bold'>Stop</p>
@@ -67,11 +63,7 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
 
   return (
     <div className='flex flex-1 flex-col items-center justify-center'>
-      <p className='m-0 mb-4 sm:mb-4 md:mb-10 text-7xl sm:text-7xl md:text-8xl lg:text-9xl font-bold'>
-        {hours > 0 ? `${hours.toString().padStart(2, '0')}:` : null}
-        {minutes.toString().padStart(2, '0')}:
-        {seconds.toString().padStart(2, '0')}
-      </p>
+      <TimerDisplay hours={hours} minutes={minutes} seconds={seconds} />
 
       {message && (
         <TimerMessage
@@ -80,12 +72,7 @@ export default function CountdownTimerProps(props: CountdownTimerProps) {
         />
       )}
 
-      <div
-        className='pt-5 md:pt-10 rounded-10 items-center justify-center flex cursor-pointer'
-        onClick={handleTimerButtonPressed}
-      >
-        {renderTimerButtonLabel}
-      </div>
+      <TimerButton onClick={handleTimerButtonPressed} label={timerLabel} />
     </div>
   );
 }

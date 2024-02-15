@@ -1,3 +1,5 @@
+export const APP_TTILE = 'Just Pomodoro Lite';
+
 // time constants
 export const DEFAULT_WORK_MODE_MINUTES = 25;
 export const DEFAULT_BREAK_MODE_MINUTES = 5;
