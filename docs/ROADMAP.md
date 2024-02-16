@@ -7,7 +7,6 @@ What can you expect to improved
 - [x] Initial App (timer)
 - [x] Responsive Styles
 - [x] PWA Support
-- [ ] State Persistence (keep track of mode and time)
 - [ ] Customizability Options
   - [ ] Color Theme
   - [x] Message
